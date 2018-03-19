@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd670b5f-5ec8-4e4a-a0b8-aada304e737d">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IDPRESTAMO" class="java.lang.String"/>
+	<parameter name="URL_LOGO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select ME.FECVENCPAGOCUOTA, ME.INTERES, ME.AMORTIZACION, ME.CUOTA, ME.TOTALAMORTIZADO, ME.CAPITALPENDIENTE
+  from DBRETO.DET_PRESTAMO ME
+ where ME.IDPRESTAMO = $P{IDPRESTAMO}]]>
+	</queryString>
+	<field name="FECVENCPAGOCUOTA" class="java.sql.Timestamp"/>
+	<field name="INTERES" class="java.math.BigDecimal"/>
+	<field name="AMORTIZACION" class="java.math.BigDecimal"/>
+	<field name="CUOTA" class="java.math.BigDecimal"/>
+	<field name="TOTALAMORTIZADO" class="java.math.BigDecimal"/>
+	<field name="CAPITALPENDIENTE" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="23" y="16" width="499" height="47" uuid="9dc5ecfb-8a58-433d-9e4e-96502c84ca28"/>
+				<imageExpression><![CDATA[$P{URL_LOGO}+"logo_bbva.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="46" y="0" width="71" height="27" uuid="5102e9d0-7667-4db7-bbcb-72621dc3ef63"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Interes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="0" width="100" height="27" uuid="3eb0c115-17cf-497a-9339-dbf2f7d62fb9"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amortizacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="0" width="80" height="27" uuid="aa268bb3-ace4-45d9-bb94-8138fc184c48"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuota de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="0" width="94" height="27" uuid="f76370ec-2717-492c-a180-7813a172b6e3"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amortizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="0" width="87" height="27" uuid="c8b1e38b-93df-4ab5-b309-a5778f6bfe09"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Capital Pendiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="0" width="77" height="27" uuid="1c36e436-4e8b-4e37-9b22-8df01df36172"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Vencimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="46" height="27" uuid="22fd4a1d-da05-487e-8856-cc81a34ba9ab"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero Cuota]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="478" y="0" width="77" height="20" uuid="cac6d6bf-2bb0-4eab-844d-a60905519c8c"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format($F{FECVENCPAGOCUOTA})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="117" y="0" width="100" height="20" uuid="c1f25d6e-7073-4f34-9687-10e3ad5cd006"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{AMORTIZACION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="217" y="0" width="80" height="20" uuid="578031a7-6b28-4c50-8465-4f7ad8ff71fb"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CUOTA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="297" y="0" width="94" height="20" uuid="ec41f544-4929-495d-8140-6df1f7abd274"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TOTALAMORTIZADO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="391" y="0" width="87" height="20" uuid="3a7c3ea6-aeb6-4da8-ad9a-9fce85c3487e"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CAPITALPENDIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="46" height="20" uuid="5596779d-6eee-46a5-886e-aa57ccde3100"/>
+				<box leftPadding="0">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="46" y="0" width="71" height="20" uuid="38a302f7-3abe-40f5-9f9b-83e877a6fc52"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INTERES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="1" splitType="Stretch">
+			<line>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="1" uuid="6ac5825f-53ba-4b79-9ded-fc20dc8da3e9"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
