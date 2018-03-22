@@ -33,8 +33,10 @@ angular.module('PrestamoApp').controller('PrestamoController', ['$scope', 'Prest
     	PermisoService.createPrestamo(prestamo)
             .then(
             function(d) {
-            	self.prestamo.idPrestamo = d.prestamo.idPrestamo;
-            	self.lstPrestamoDet = d.lstPrestamoDet;
+            	if (d.prestamo) {
+                	self.prestamo.idPrestamo = d.prestamo.idPrestamo;
+                	self.lstPrestamoDet = d.lstPrestamoDet;
+            	}
                 self.codMensaje = d.codMensaje;
                 self.dscMensaje = d.dscMensaje;
             },
@@ -70,7 +72,10 @@ angular.module('PrestamoApp').controller('PrestamoController', ['$scope', 'Prest
     function reset() {
         self.prestamo={idPrestamo: null, prestamo:0.0, tasa: 0.0 , plazo: 0, tipoPlazo: 'M', fecDesembolso: new Date(), indPeriodoGracia: 'N', 
 		          numPeriodoGracia: 0, indCapitalInteres: 'N', origen:'APIRETO', email: ''};
-        $scope.myForm.$setPristine(); //reset Form
+        self.lstPrestamoDet = [];
+        self.codMensaje = '';
+        self.dscMensaje = '';
+        $scope.myForm.$setPristine();
     }
  
 }]);

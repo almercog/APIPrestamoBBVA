@@ -10,17 +10,21 @@
 <link href="<c:url value='/assets/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body ng-app="PrestamoApp" class="ng-cloak">
+  
       <div class="generic-container" ng-controller="PrestamoController as ctrl">
           <div class="panel panel-default">
               <div class="panel-heading"><span class="lead">Simulador de prestamo</span></div>
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
-                      <div class="row" ng-show="ctrl.error.codMensaje">
+                   <input type="hidden" ng-model="ctrl.prestamo.idPrestamo" />
+                       
+                    <div class="row">
                           <div class="form-group col-md-12">
-                              <span ng-show="myForm.price.$error.required">{{ctrl.error.dscMensaje}}</span>
+					          <div ng-show="ctrl.codMensaje" class="{{ctrl.codMensaje==1?'has-success':'has-error'}}">
+					              {{ctrl.dscMensaje}}
+					          </div>
                           </div>
-                      </div>    
-                      <input type="hidden" ng-model="ctrl.prestamo.idPrestamo" />
+                     </div>
                        
                       <div class="row">
                           <div class="form-group col-md-12">
@@ -39,7 +43,7 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="tasa">Tasa (%)</label>
                               <div class="col-md-7">
-                                  <input type="number" ng-model="ctrl.prestamo.tasa" id="tasa" min="1" class="field form-control input-sm" placeholder="Ingrese Tipo de interés"/>
+                                  <input type="number" ng-model="ctrl.prestamo.tasa" id="tasa" min="1" max="100" class="field form-control input-sm" placeholder="Ingrese Tipo de interés"/>
                                   <div class="has-error" ng-show="myForm.$dirty">
                                       <span ng-show="myForm.price.$error.required">Es un campo requerido</span>
                                       <span ng-show="myForm.price.$error.number">No es un numero valido</span>

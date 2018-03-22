@@ -79,7 +79,7 @@ public class PrestamoService implements IPrestamoService {
 			DateTime fchDesembolso = new DateTime(
 					CommonsHelper.formatStringToDate(APIConstants.PATTERN_DD_MM_YYYY, req.getFecDesembolso()));
 			Integer periodoGracia = 0;
-			if (fchDesembolso.compareTo(fchHoy) > 0) {
+			if (fchDesembolso.isBefore(fchHoy.getMillis())) {
 				throw new ValidateException("La fecha de Desembolso no debe ser menor a la fecha actual.");
 			}
 
